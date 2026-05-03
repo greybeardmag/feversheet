@@ -597,6 +597,7 @@ footer strong { color: var(--ink); }
    PRINT
 ══════════════════════════════════════════ */
 @media print {
+   .no-print { display: none !important; }
   @page { size: letter portrait; margin: 13mm 13mm 13mm 13mm; }
   body {
     background: #fff !important;
