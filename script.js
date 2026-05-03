@@ -2023,22 +2023,22 @@ const TRANSLATIONS = {
 const LANGUAGES = [
   { code: 'en',      label: 'English',     dir: 'ltr' },
   { code: 'ar',      label: 'Arabic - العربية',      dir: 'rtl' },
+  { code: 'zh-Hant', label: 'Chinese - Cantonese - 中文（繁體）',    dir: 'ltr' },
+  { code: 'zh-Hans', label: 'Chinese - Mandarin - 中文（简体）',    dir: 'ltr' },
   { code: 'fa',      label: 'Farsi - فارسی',        dir: 'rtl' },
+  { code: 'tl',      label: 'Filipino - Tagalog',      dir: 'ltr' },
   { code: 'fr',      label: 'French - Français',     dir: 'ltr' },
   { code: 'hi',      label: 'Hindi - हिन्दी',        dir: 'ltr' },
   { code: 'it',      label: 'Italian - Italiano',     dir: 'ltr' },
   { code: 'ko',      label: 'Korean - 한국어',         dir: 'ltr' },
   { code: 'pl',      label: 'Polish - Polski',       dir: 'ltr' },
+  { code: 'pt',      label: 'Portuguese - Português', dir: 'ltr' },
+  { code: 'pa',      label: 'Punjabi - ਪੰਜਾਬੀ',      dir: 'ltr' },
   { code: 'es',      label: 'Spanish - Español',      dir: 'ltr' },
   { code: 'ta',      label: 'Tamil - தமிழ்',         dir: 'ltr' },
-  { code: 'ur',      label: 'Urdu - اردو',          dir: 'rtl' },
-  { code: 'vi',      label: 'Vietnamese - Tiếng Việt',   dir: 'ltr' },
-  { code: 'zh-Hans', label: 'Mandarin - 中文（简体）',    dir: 'ltr' },
-  { code: 'zh-Hant', label: 'Cantonese - 中文（繁體）',    dir: 'ltr' },
-  { code: 'pa',      label: 'Punjabi - ਪੰਜਾਬੀ',      dir: 'ltr' },
-  { code: 'pt',      label: 'Portuguese - Português', dir: 'ltr' },
-  { code: 'tl',      label: 'Filipino - Tagalog',      dir: 'ltr' },
   { code: 'uk',      label: 'Ukrainian - Українська',  dir: 'ltr' },
+  { code: 'ur',      label: 'Urdu - اردو',          dir: 'rtl' },
+  { code: 'vi',      label: 'Vietnamese - Tiếng Việt',   dir: 'ltr' }
 ];
 
 /* ─────────────────────────────────────
