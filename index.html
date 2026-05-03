@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pediatric Fever Dosing Sheet</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌡️</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="screen-wrapper">
+
+  <!-- ══════════════════════════════
+       HEADER
+  ══════════════════════════════ -->
+  <header>
+    <div class="header-left">
+      <h1>
+        <span data-i18n="header_title">Pediatric</span>
+        <span style="color:var(--red)" data-i18n="header_title_highlight">Fever</span>
+        <span data-i18n="header_title_suffix">Dosing Sheet</span>
+      </h1>
+      <p data-i18n="header_subtitle">Enter your child's weight and age group to calculate correct doses of Acetaminophen (Tylenol) and Ibuprofen (Advil/Motrin) across all formulations.</p>
+
+      <!-- Language selector sits below subtitle -->
+      <div class="lang-selector-wrap">
+        <span class="lang-selector-label" data-i18n="lang_selector_label">Language</span>
+        <select id="langSelect" aria-label="Language selector"></select>
+      </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 6 2 18 2 18 9"/>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+        <rect x="6" y="14" width="12" height="8"/>
+      </svg>
+      <span data-i18n="print_btn">Print Sheet</span>
+    </button>
+  </header>
+
+  <!-- ══════════════════════════════
+       FEVER DEFINITION
+  ══════════════════════════════ -->
+  <div class="fever-box">
+    <div class="fever-icon" aria-hidden="true">🌡️</div>
+    <div>
+      <h3 data-i18n="fever_box_heading">What is a Fever?</h3>
+      <div class="fever-temps">
+        <div class="temp-chip">≥ 38.0°C <span data-i18n="temp_rectal">Rectal (most accurate)</span></div>
+        <div class="temp-chip">≥ 38.0°C <span data-i18n="temp_temporal">Temporal / Ear</span></div>
+        <div class="temp-chip">≥ 37.5°C <span data-i18n="temp_oral">Oral</span></div>
+        <div class="temp-chip">≥ 37.2°C <span data-i18n="temp_axillary">Axillary (least accurate)</span></div>
+      </div>
+      <div class="fever-note" data-i18n-html="fever_note_html">
+        <strong>When to give fever medication:</strong> You may give Tylenol or Advil when your child has a confirmed fever <em>and</em> appears uncomfortable, irritable, or is having difficulty sleeping or eating. A fever alone does not always require medication — it is part of the body's natural immune response. <strong>Seek medical attention if:</strong> your child is under 3 months with any fever, the fever lasts more than 2–3 days, your child appears very unwell or has difficulty breathing, a febrile seizure occurs, or you are concerned for any reason.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       INPUT CARD
+  ══════════════════════════════ -->
+  <div class="input-card">
+
+    <!-- Weight input -->
+    <div>
+      <label for="weightInput" data-i18n="label_weight">Child's Weight</label>
+      <div class="weight-row">
+        <input class="weight-input" id="weightInput"
+               type="number" min="1" max="150" step="0.1"
+               data-i18n-placeholder="weight_placeholder"
+               placeholder="—"
+               oninput="calculate()">
+        <div class="unit-toggle">
+          <button class="unit-btn active" id="btnKg" onclick="setUnit('kg')">kg</button>
+          <button class="unit-btn" id="btnLbs" onclick="setUnit('lbs')">lbs</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Age group -->
+    <div>
+      <label data-i18n="label_age_group">Age Group</label>
+      <button class="age-toggle-btn" id="ageToggle" onclick="toggleAge()">
+        <div class="check-circle" id="ageCheck"></div>
+        <span data-i18n="age_toggle_text">Child is under 6 months</span>
+      </button>
+    </div>
+
+    <!-- Tylenol dose display -->
+    <div class="dose-display" id="doseDisplayT">
+      <div class="dose-label" data-i18n="label_tylenol_dose">Tylenol dose</div>
+      <div class="dose-value" id="tylenolMgRange">— mg</div>
+      <div class="dose-sub" data-i18n="dose_sub_tylenol">15 mg/kg per dose</div>
+    </div>
+
+    <!-- Advil dose display -->
+    <div class="dose-display" id="doseDisplayA">
+      <div class="dose-label" data-i18n="label_advil_dose">Advil dose</div>
+      <div class="dose-value" id="advilMgRange">— mg</div>
+      <div class="dose-sub" data-i18n="dose_sub_advil">10 mg/kg per dose</div>
+    </div>
+
+    <!-- Under-5kg warning (populated by JS) -->
+    <div class="input-age-note hidden" id="inputAgeNote"></div>
+  </div>
+
+  <!-- ══════════════════════════════
+       MAX BANNER
+  ══════════════════════════════ -->
+  <div class="max-banner">
+    <div class="max-item">
+      <div class="max-label" data-i18n="max_tylenol_single_label">Tylenol — Max Single Dose</div>
+      <div class="max-val" id="maxTylenolDose">— mg</div>
+      <div class="max-sub" data-i18n="max_tylenol_single_sub">Absolute max 1,000 mg/dose</div>
+    </div>
+    <div class="max-item">
+      <div class="max-label" data-i18n="max_tylenol_daily_label">Tylenol — Max Daily</div>
+      <div class="max-val" id="maxTylenolDay">— mg/day</div>
+      <div class="max-sub" data-i18n="max_tylenol_daily_sub">Every 4–6 h · max 5 doses/day</div>
+    </div>
+    <div class="max-item" id="maxAdvilDoseItem">
+      <div class="max-label" data-i18n="max_advil_single_label">Advil — Max Single Dose</div>
+      <div class="max-val" id="maxAdvilDose">— mg</div>
+      <div class="max-sub" data-i18n="max_advil_single_sub">Absolute max 600 mg/dose</div>
+    </div>
+    <div class="max-item" id="maxAdvilDayItem">
+      <div class="max-label" data-i18n="max_advil_daily_label">Advil — Max Daily</div>
+      <div class="max-val" id="maxAdvilDay">— mg/day</div>
+      <div class="max-sub" data-i18n="max_advil_daily_sub">Every 6–8 h · max 4 doses/day</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       TYLENOL SECTION
+  ══════════════════════════════ -->
+  <div class="drug-section">
+    <div class="drug-header">
+      <div class="drug-badge badge-tylenol">Tylenol®</div>
+      <div class="drug-generic" data-i18n="tylenol_generic">Acetaminophen</div>
+      <div class="drug-dose-range">
+        <span data-i18n="dose">Dose:</span>
+        <strong data-i18n="tylenol_dose_range"> 15 mg/kg</strong>
+        <span data-i18n="tylenol_dose_suffix"> · q4–6h · max 5×/day</span>
+      </div>
+    </div>
+    <div class="dose-table-wrap">
+      <table class="dose-table tylenol">
+        <thead>
+          <tr>
+            <th style="width:30%" data-i18n="col_formulation">Formulation</th>
+            <th style="width:18%" class="col-amount" data-i18n="col_amount">Give This Amount</th>
+            <th style="width:26%" data-i18n="col_how_often">How Often</th>
+            <th style="width:26%" data-i18n="col_who_for">Who It's For</th>
+          </tr>
+        </thead>
+        <tbody id="tylenolGrid"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       ADVIL SECTION (≥ 6 months)
+  ══════════════════════════════ -->
+  <div id="advilSection">
+    <div class="drug-section">
+      <div class="drug-header">
+        <div class="drug-badge badge-advil">Advil® / Motrin®</div>
+        <div class="drug-generic" data-i18n-html="advil_generic">Ibuprofen — <em>≥ 6 months only</em></div>
+        <div class="drug-dose-range">
+          <span data-i18n="dose">Dose:</span>
+          <strong data-i18n="advil_dose_range"> 10 mg/kg</strong>
+          <span data-i18n="advil_dose_suffix"> · q6–8h · max 4×/day</span>
+        </div>
+      </div>
+      <div class="dose-table-wrap">
+        <table class="dose-table advil">
+          <thead>
+            <tr>
+              <th style="width:30%" data-i18n="col_formulation">Formulation</th>
+              <th style="width:18%" class="col-amount" data-i18n="col_amount">Give This Amount</th>
+              <th style="width:26%" data-i18n="col_how_often">How Often</th>
+              <th style="width:26%" data-i18n="col_who_for">Who It's For</th>
+            </tr>
+          </thead>
+          <tbody id="advilGrid"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       ADVIL WARNING (< 6 months)
+  ══════════════════════════════ -->
+  <div class="advil-warning" id="advilWarning">
+    <div class="advil-warning-icon" aria-hidden="true">⚠️</div>
+    <div>
+      <h3 data-i18n="advil_warning_title">Ibuprofen (Advil / Motrin) is NOT safe for infants under 6 months of age</h3>
+      <p data-i18n-html="advil_warning_body_html">
+        Ibuprofen should <strong>not</strong> be given to any child younger than 6 months old.
+        For fever management in infants under 6 months, <strong>Acetaminophen (Tylenol) is the only recommended over-the-counter option</strong>
+        — and only with physician guidance for newborns under 3 months of age.<br><br>
+        <strong>Important:</strong> If your infant under 6 months has a fever ≥ 38.0°C (rectal),
+        <strong>contact your doctor or go to the emergency department promptly.</strong>
+        Fever in young infants can indicate serious infection and requires immediate medical evaluation.
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       DOSING SCHEDULE (≥ 6 months)
+  ══════════════════════════════ -->
+  <div class="schedule-section" id="scheduleSection">
+    <div class="schedule-header" data-i18n="schedule_header">Example Dosing Schedule — Starting at 8:00 AM</div>
+    <div class="schedule-tabs">
+      <button class="sched-tab active" onclick="setSchedule('staggered')" data-i18n="sched_tab_staggered">Staggered (Recommended)</button>
+      <button class="sched-tab" onclick="setSchedule('tylenol')" data-i18n="sched_tab_tylenol">Tylenol Only</button>
+      <button class="sched-tab" onclick="setSchedule('alternating')" data-i18n="sched_tab_alternating">Full Alternating</button>
+    </div>
+
+    <!-- Staggered panel -->
+    <div class="schedule-card sched-panel active-panel" id="panel-staggered">
+      <h4 data-i18n="sched_staggered_title">Staggered Tylenol + Advil — 3 hours apart</h4>
+      <div class="sched-desc" data-i18n="sched_staggered_desc">Give Tylenol first, then Advil 3 hours later, and continue alternating. This provides more continuous fever control than either drug alone. Each drug still respects its own minimum interval: Tylenol every 4 h minimum, Advil every 6 h minimum.</div>
+      <div class="timeline" id="staggered-tl"></div>
+    </div>
+
+    <!-- Tylenol only panel -->
+    <div class="schedule-card sched-panel" id="panel-tylenol" style="display:none">
+      <h4 data-i18n="sched_tylenol_title">Tylenol Only — every 4–6 hours</h4>
+      <div class="sched-desc" data-i18n="sched_tylenol_desc">Use when Advil is unavailable, not tolerated, or your physician recommends Tylenol only. Give every 4 hours as needed (maximum 5 doses in 24 hours).</div>
+      <div class="timeline" id="tylenol-tl"></div>
+    </div>
+
+    <!-- Alternating panel -->
+    <div class="schedule-card sched-panel" id="panel-alternating" style="display:none">
+      <h4 data-i18n="sched_alternating_title">Alternating every 4 hours</h4>
+      <div class="sched-desc" data-i18n="sched_alternating_desc">Strictly alternating drugs every 4 hours. Each drug is given every 8 hours (well within its maximum frequency). Keep a written log to avoid accidentally doubling a dose.</div>
+      <div class="timeline" id="alternating-tl"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SAFETY NOTES
+  ══════════════════════════════ -->
+  <div class="safety-grid">
+    <div class="safety-card tylenol-safe">
+      <h4 data-i18n="safety_tylenol_heading">Acetaminophen — Key Points</h4>
+      <ul>
+        <li data-i18n="safety_tylenol_1">Safe from birth (physician guidance for &lt; 3 months)</li>
+        <li data-i18n="safety_tylenol_2">Every 4–6 hours as needed; max 5 doses/24 h</li>
+        <li data-i18n-html="safety_tylenol_3_html">Do <strong>not</strong> exceed 75 mg/kg/day (max 4,000 mg/day)</li>
+        <li data-i18n="safety_tylenol_4">Avoid with liver (hepatic) problems</li>
+        <li data-i18n="safety_tylenol_5">Check cold/flu combination products for hidden acetaminophen</li>
+      </ul>
+    </div>
+    <div class="safety-card advil-safe" id="advilSafetyCard">
+      <h4 data-i18n="safety_advil_heading">Ibuprofen — Key Points</h4>
+      <ul>
+        <li data-i18n-html="safety_advil_1_html"><strong>Not for infants &lt; 6 months</strong></li>
+        <li data-i18n="safety_advil_2">Every 6–8 hours as needed; max 4 doses/24 h</li>
+        <li data-i18n="safety_advil_3">Do not exceed 40 mg/kg/day (max 2,400 mg/day)</li>
+        <li data-i18n="safety_advil_4">Give with food or milk to reduce stomach upset</li>
+        <li data-i18n="safety_advil_5">Avoid if dehydrated, or with kidney or bleeding problems</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       FOOTER
+  ══════════════════════════════ -->
+  <footer data-i18n-html="footer_html">
+    <strong>Disclaimer:</strong> This sheet is a clinical reference aid. Doses are based on standard weight-based guidelines (acetaminophen 15 mg/kg/dose; ibuprofen 10 mg/kg/dose). Individual patient factors including age, organ function, concurrent medications, and clinical context must always be considered. Verify with current formulary guidelines (e.g. CPS, SickKids Drug Handbook). This tool does not replace clinical judgment. Formulations listed are representative Canadian market products — always confirm label concentration before dispensing.
+    This webpage and translations were generated using AI (Claude); please check the dosing and translations for accuracy prior to distrubiton.
+  </footer>
+
+</div><!-- /.screen-wrapper -->
+
+<script src="script.js" defer></script>
+</body>
+</html>
