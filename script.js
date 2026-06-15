@@ -43,6 +43,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "Max 5 doses/day",
     "max_doses_advil": "Max 4 doses/day",
     "enter_weight": "Enter weight",
+    "use_liquid_tag": "Use liquid for accurate dosing",
     "advil_warning_title": "Ibuprofen (Advil / Motrin) is NOT safe for infants under 6 months of age",
     "advil_warning_body_html": "Ibuprofen should <strong>not</strong> be given to any child younger than 6 months old. For fever management in infants under 6 months, <strong>Acetaminophen (Tylenol) is the only recommended over-the-counter option</strong> — and only with physician guidance for newborns under 3 months of age.<br><br><strong>Important:</strong> If your infant under 6 months has a fever ≥ 38.0°C (rectal), <strong>contact your doctor or go to the emergency department promptly.</strong> Fever in young infants can indicate serious infection and requires immediate medical evaluation.",
     "schedule_header": "Example Dosing Schedule — Starting at 8:00 AM",
@@ -155,6 +156,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "أقصاه 5 جرعات/يوم",
     "max_doses_advil": "أقصاه 4 جرعات/يوم",
     "enter_weight": "أدخل الوزن",
+    "use_liquid_tag": "استخدم الشراب لجرعة أدق",
     "advil_warning_title": "الإيبوبروفين (أدفيل / موترين) غير آمن للرضع أقل من 6 أشهر",
     "advil_warning_body_html": "يجب <strong>عدم</strong> إعطاء الإيبوبروفين لأي طفل أقل من 6 أشهر. لإدارة الحمى لدى الرضع أقل من 6 أشهر، <strong>الأسيتامينوفين (تايلنول) هو الخيار الوحيد الموصى به بدون وصفة طبية</strong> — وفقط بتوجيه طبي للمواليد أقل من 3 أشهر.<br><br><strong>مهم:</strong> إذا كان رضيعك أقل من 6 أشهر ولديه حمى ≥ 38.0°C (شرجي)، <strong>اتصل بطبيبك أو اذهب إلى غرفة الطوارئ فورًا.</strong> قد تشير الحمى عند الرضع الصغار إلى عدوى خطيرة.",
     "schedule_header": "مثال على جدول الجرعات — بدءًا من الساعة 8:00 صباحًا",
@@ -267,6 +269,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "Máx. 5 dosis/día",
     "max_doses_advil": "Máx. 4 dosis/día",
     "enter_weight": "Ingrese el peso",
+    "use_liquid_tag": "Use el líquido para una dosis precisa",
     "advil_warning_title": "El Ibuprofeno (Advil / Motrin) NO es seguro para bebés menores de 6 meses",
     "advil_warning_body_html": "El ibuprofeno <strong>no</strong> debe darse a ningún niño menor de 6 meses. Para el manejo de la fiebre en bebés menores de 6 meses, <strong>el Acetaminofén (Tylenol) es la única opción de venta libre recomendada</strong> — y solo con guía médica para recién nacidos menores de 3 meses.<br><br><strong>Importante:</strong> Si su bebé menor de 6 meses tiene fiebre ≥ 38.0°C (rectal), <strong>comuníquese con su médico o vaya a urgencias de inmediato.</strong> La fiebre en bebés pequeños puede indicar una infección grave y requiere evaluación médica urgente.",
     "schedule_header": "Ejemplo de horario de dosificación — iniciando a las 8:00 AM",
@@ -379,6 +382,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "حداکثر ۵ دوز/روز",
     "max_doses_advil": "حداکثر ۴ دوز/روز",
     "enter_weight": "وزن را وارد کنید",
+    "use_liquid_tag": "برای دوز دقیق از شربت استفاده کنید",
     "advil_warning_title": "ایبوپروفن (ادویل / موترین) برای نوزادان زیر ۶ ماه ایمن نیست",
     "advil_warning_body_html": "ایبوپروفن <strong>نباید</strong> به کودکان زیر ۶ ماه داده شود. برای مدیریت تب در نوزادان زیر ۶ ماه، <strong>استامینوفن (تایلنول) تنها گزینه بدون نسخه توصیه‌شده است</strong> — و فقط با راهنمایی پزشک برای نوزادان زیر ۳ ماه.<br><br><strong>مهم:</strong> اگر نوزاد شما زیر ۶ ماه تب ≥ ۳۸٫۰°C (رکتال) دارد، <strong>فوری با پزشک تماس بگیرید یا به اورژانس مراجعه کنید.</strong> تب در نوزادان کوچک می‌تواند نشانه عفونت جدی باشد.",
     "schedule_header": "نمونه برنامه دوزبندی — شروع از ساعت ۸:۰۰ صبح",
@@ -491,6 +495,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "Max. 5 doses/jour",
     "max_doses_advil": "Max. 4 doses/jour",
     "enter_weight": "Entrez le poids",
+    "use_liquid_tag": "Utiliser la forme liquide pour un dosage précis",
     "advil_warning_title": "L'ibuprofène (Advil / Motrin) n'est PAS sûr pour les nourrissons de moins de 6 mois",
     "advil_warning_body_html": "L'ibuprofène ne doit <strong>pas</strong> être donné à un enfant de moins de 6 mois. Pour la gestion de la fièvre chez les nourrissons de moins de 6 mois, <strong>l'Acétaminophène (Tylenol) est la seule option en vente libre recommandée</strong> — et uniquement sous guidance médicale pour les nouveau-nés de moins de 3 mois.<br><br><strong>Important :</strong> Si votre nourrisson de moins de 6 mois a une fièvre ≥ 38,0 °C (rectale), <strong>contactez votre médecin ou rendez-vous aux urgences rapidement.</strong> La fièvre chez les jeunes nourrissons peut indiquer une infection grave et nécessite une évaluation médicale immédiate.",
     "schedule_header": "Exemple d'horaire de dosage — en commençant à 8 h 00",
@@ -603,6 +608,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "अधिकतम 5 खुराक/दिन",
     "max_doses_advil": "अधिकतम 4 खुराक/दिन",
     "enter_weight": "वजन दर्ज करें",
+    "use_liquid_tag": "सटीक खुराक के लिए सिरप का उपयोग करें",
     "advil_warning_title": "इबुप्रोफेन (एडविल / मोट्रिन) 6 माह से कम शिशुओं के लिए सुरक्षित नहीं है",
     "advil_warning_body_html": "6 माह से कम उम्र के किसी भी बच्चे को इबुप्रोफेन <strong>नहीं</strong> देनी चाहिए। 6 माह से कम शिशुओं के बुखार के लिए, <strong>एसिटामिनोफेन (टायलेनॉल) एकमात्र अनुशंसित OTC विकल्प है</strong> — और 3 माह से कम नवजातों के लिए केवल चिकित्सक के मार्गदर्शन में।<br><br><strong>महत्वपूर्ण:</strong> यदि आपके 6 माह से कम शिशु को ≥ 38.0°C (रेक्टल) बुखार है, <strong>तुरंत अपने डॉक्टर से संपर्क करें या आपातकालीन विभाग जाएं।</strong> छोटे शिशुओं में बुखार गंभीर संक्रमण का संकेत हो सकता है।",
     "schedule_header": "खुराक शेड्यूल उदाहरण — सुबह 8:00 बजे से शुरू",
@@ -715,6 +721,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "Max. 5 dosi/giorno",
     "max_doses_advil": "Max. 4 dosi/giorno",
     "enter_weight": "Inserire il peso",
+    "use_liquid_tag": "Usare il liquido per un dosaggio preciso",
     "advil_warning_title": "L'ibuprofene (Moment / Nurofen) NON è sicuro per i lattanti sotto i 6 mesi",
     "advil_warning_body_html": "L'ibuprofene <strong>non</strong> deve essere somministrato a bambini di età inferiore a 6 mesi. Per la gestione della febbre nei lattanti sotto i 6 mesi, <strong>il Paracetamolo (Tachipirina) è l'unica opzione da banco raccomandata</strong> — e solo con indicazione medica per i neonati sotto i 3 mesi.<br><br><strong>Importante:</strong> Se il tuo lattante di età inferiore a 6 mesi ha una febbre ≥ 38,0°C (rettale), <strong>contatta il tuo medico o vai al pronto soccorso tempestivamente.</strong> La febbre nei neonati può indicare un'infezione grave e richiede una valutazione medica immediata.",
     "schedule_header": "Esempio di schema posologico — a partire dalle 8:00",
@@ -827,6 +834,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "최대 5회/일",
     "max_doses_advil": "최대 4회/일",
     "enter_weight": "몸무게를 입력하세요",
+    "use_liquid_tag": "정확한 용량을 위해 시럽을 사용하세요",
     "advil_warning_title": "이부프로펜(애드빌/모트린)은 생후 6개월 미만 영아에게 안전하지 않습니다",
     "advil_warning_body_html": "생후 6개월 미만의 영아에게는 이부프로펜을 <strong>투약해서는 안 됩니다</strong>. 생후 6개월 미만 영아의 발열 관리에는 <strong>아세트아미노펜(타이레놀)이 유일하게 권장되는 일반의약품</strong>입니다 — 생후 3개월 미만의 신생아는 반드시 의사의 지도하에 사용하십시오.<br><br><strong>중요:</strong> 생후 6개월 미만의 아이가 38.0°C(직장) 이상의 발열이 있는 경우, <strong>즉시 의사에게 연락하거나 응급실로 가십시오.</strong> 어린 영아의 발열은 심각한 감염의 징후일 수 있으며 즉각적인 의학적 평가가 필요합니다.",
     "schedule_header": "투약 일정 예시 — 오전 8시 시작",
@@ -939,6 +947,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "Maks. 5 dawek/dobę",
     "max_doses_advil": "Maks. 4 dawki/dobę",
     "enter_weight": "Wpisz wagę",
+    "use_liquid_tag": "Użyj syropu, aby dokładnie dawkować",
     "advil_warning_title": "Ibuprofen (Advil / Motrin) NIE jest bezpieczny dla niemowląt poniżej 6 miesięcy",
     "advil_warning_body_html": "Ibuprofenu <strong>nie należy</strong> podawać dzieciom poniżej 6 miesiąca życia. W przypadku niemowląt poniżej 6 miesięcy <strong>Paracetamol (Tylenol) jest jedyną zalecaną opcją bez recepty</strong> — i tylko pod nadzorem lekarza dla noworodków poniżej 3 miesięcy.<br><br><strong>Ważne:</strong> Jeśli niemowlę poniżej 6 miesięcy ma gorączkę ≥ 38,0°C (doodbytniczo), <strong>natychmiast skontaktuj się z lekarzem lub jedź na izbę przyjęć.</strong> Gorączka u małych niemowląt może świadczyć o poważnej infekcji.",
     "schedule_header": "Przykładowy harmonogram dawkowania — od godz. 8:00",
@@ -1051,6 +1060,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "அதிகபட்சம் 5 அளவு/நாள்",
     "max_doses_advil": "அதிகபட்சம் 4 அளவு/நாள்",
     "enter_weight": "எடையை உள்ளிடுக",
+    "use_liquid_tag": "துல்லியமான அளவுக்கு மருந்துத் திரவத்தைப் பயன்படுத்தவும்",
     "advil_warning_title": "ஐபுபுரோஃபன் (அட்வில் / மோட்ரின்) 6 மாதத்திற்கும் குறைவான குழந்தைகளுக்கு பாதுகாப்பானது அல்ல",
     "advil_warning_body_html": "6 மாதத்திற்கும் குறைவான குழந்தைகளுக்கு ஐபுபுரோஃபன் <strong>கொடுக்கக் கூடாது</strong>. 6 மாதத்திற்கும் குறைவான குழந்தைகளுக்கு காய்ச்சல் சிகிச்சைக்கு, <strong>அசிட்டாமினோஃபன் (டைலனால்) மட்டுமே பரிந்துரைக்கப்பட்ட மருந்துகடை விற்பனை விருப்பம்</strong> — 3 மாதத்திற்கும் குறைவான நவஜாதருக்கு மருத்துவர் வழிகாட்டுதலுடன் மட்டுமே.<br><br><strong>முக்கியம்:</strong> 6 மாதத்திற்கும் குறைவான குழந்தைக்கு ≥ 38.0°C (மலக்குடல்) காய்ச்சல் இருந்தால், <strong>உடனடியாக மருத்துவரைத் தொடர்பு கொள்ளுங்கள் அல்லது அவசர சேவைக்குச் செல்லுங்கள்.</strong>",
     "schedule_header": "மருந்தளவு அட்டவணை உதாரணம் — காலை 8:00 மணி முதல்",
@@ -1163,6 +1173,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "زیادہ سے زیادہ 5 خوراک/دن",
     "max_doses_advil": "زیادہ سے زیادہ 4 خوراک/دن",
     "enter_weight": "وزن درج کریں",
+    "use_liquid_tag": "درست خوراک کے لیے شربت استعمال کریں",
     "advil_warning_title": "آئبوپروفین (ایڈول / موٹرین) 6 ماہ سے کم بچوں کے لیے محفوظ نہیں",
     "advil_warning_body_html": "آئبوپروفین 6 ماہ سے کم عمر کسی بھی بچے کو <strong>نہیں</strong> دینی چاہیے۔ 6 ماہ سے کم بچوں میں بخار کے علاج کے لیے، <strong>ایسیٹامینوفن (ٹائلینول) واحد تجویز کردہ بغیر نسخے کی دوا ہے</strong> — اور 3 ماہ سے کم نومولود کے لیے صرف ڈاکٹر کی ہدایت پر۔<br><br><strong>اہم:</strong> اگر آپ کے 6 ماہ سے کم کے بچے کا بخار ≥ 38.0°C (ملاشی) ہو، <strong>فوری طور پر ڈاکٹر سے رابطہ کریں یا ایمرجنسی ڈیپارٹمنٹ جائیں۔</strong> چھوٹے بچوں میں بخار سنگین انفیکشن کی علامت ہو سکتا ہے۔",
     "schedule_header": "خوراک کا نمونہ شیڈول — صبح 8:00 سے شروع",
@@ -1275,6 +1286,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "Tối đa 5 liều/ngày",
     "max_doses_advil": "Tối đa 4 liều/ngày",
     "enter_weight": "Nhập cân nặng",
+    "use_liquid_tag": "Dùng dạng siro để định liều chính xác",
     "advil_warning_title": "Ibuprofen (Advil / Motrin) KHÔNG an toàn cho trẻ dưới 6 tháng tuổi",
     "advil_warning_body_html": "Ibuprofen <strong>không</strong> được dùng cho trẻ dưới 6 tháng tuổi. Với trẻ dưới 6 tháng, <strong>Acetaminophen (Tylenol) là lựa chọn không kê đơn duy nhất được khuyến nghị</strong> — và chỉ dùng dưới hướng dẫn của bác sĩ cho trẻ sơ sinh dưới 3 tháng.<br><br><strong>Lưu ý:</strong> Nếu trẻ dưới 6 tháng sốt ≥ 38,0°C (trực tràng), <strong>hãy liên hệ bác sĩ hoặc đến cấp cứu ngay.</strong> Sốt ở trẻ nhỏ có thể là dấu hiệu nhiễm trùng nghiêm trọng.",
     "schedule_header": "Lịch dùng thuốc mẫu — bắt đầu lúc 8:00 sáng",
@@ -1387,6 +1399,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "最多 5 次/天",
     "max_doses_advil": "最多 4 次/天",
     "enter_weight": "请输入体重",
+    "use_liquid_tag": "请使用药水以确保剂量准确",
     "advil_warning_title": "布洛芬（雅维尔 / 美林）对不满6个月婴儿不安全",
     "advil_warning_body_html": "布洛芬<strong>不应</strong>给予6个月以下的婴儿。不满6个月婴儿退烧，<strong>对乙酰氨基酚（泰诺）是唯一建议的非处方选择</strong> — 不满3个月的新生儿须在医生指导下使用。<br><br><strong>重要：</strong>若您6个月以下的婴儿体温 ≥ 38.0°C（肛温），请<strong>立即联系医生或前往急诊室。</strong>小婴儿发烧可能是严重感染的征兆，需立即就医评估。",
     "schedule_header": "用药时间表示例 — 从上午 8:00 开始",
@@ -1499,6 +1512,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "最多 5 次/天",
     "max_doses_advil": "最多 4 次/天",
     "enter_weight": "請輸入體重",
+    "use_liquid_tag": "請使用藥水以確保劑量準確",
     "advil_warning_title": "布洛芬（雅維爾 / 摩丁）對未滿6個月嬰兒不安全",
     "advil_warning_body_html": "布洛芬<strong>不應</strong>給予6個月以下的嬰兒。未滿6個月嬰兒退燒，<strong>乙醯胺酚（泰諾）是唯一建議的非處方選擇</strong> — 未滿3個月的新生兒須在醫師指導下使用。<br><br><strong>重要：</strong>若您6個月以下的嬰兒體溫 ≥ 38.0°C（肛溫），請<strong>立即聯繫醫師或前往急診室。</strong>小嬰兒發燒可能是嚴重感染的徵兆，需立即就醫評估。",
     "schedule_header": "用藥時間表範例 — 從上午 8:00 開始",
@@ -1611,6 +1625,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "ਵੱਧ ਤੋਂ ਵੱਧ 5 ਖੁਰਾਕਾਂ/ਦਿਨ",
     "max_doses_advil": "ਵੱਧ ਤੋਂ ਵੱਧ 4 ਖੁਰਾਕਾਂ/ਦਿਨ",
     "enter_weight": "ਭਾਰ ਦਰਜ ਕਰੋ",
+    "use_liquid_tag": "ਸਹੀ ਖੁਰਾਕ ਲਈ ਸ਼ਰਬਤ ਵਰਤੋ",
     "advil_warning_title": "Ibuprofen (Advil / Motrin) 6 ਮਹੀਨੇ ਤੋਂ ਘੱਟ ਉਮਰ ਦੇ ਬੱਚਿਆਂ ਲਈ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਹੈ",
     "advil_warning_body_html": "Ibuprofen 6 ਮਹੀਨੇ ਤੋਂ ਘੱਟ ਉਮਰ ਦੇ ਕਿਸੇ ਵੀ ਬੱਚੇ ਨੂੰ <strong>ਨਹੀਂ</strong> ਦੇਣੀ ਚਾਹੀਦੀ। 6 ਮਹੀਨੇ ਤੋਂ ਘੱਟ ਉਮਰ ਦੇ ਬੱਚਿਆਂ ਵਿੱਚ ਬੁਖਾਰ ਲਈ, <strong>Acetaminophen (Tylenol) ਇੱਕੋ-ਇੱਕ ਸਿਫਾਰਸ਼ੀ ਬਿਨਾਂ ਨੁਸਖੇ ਵਾਲਾ ਵਿਕਲਪ ਹੈ</strong> — ਅਤੇ 3 ਮਹੀਨੇ ਤੋਂ ਘੱਟ ਉਮਰ ਦੇ ਨਵਜੰਮੇ ਬੱਚਿਆਂ ਲਈ ਡਾਕਟਰ ਦੀ ਅਗਵਾਈ ਨਾਲ ਹੀ।<br><br><strong>ਜ਼ਰੂਰੀ:</strong> ਜੇ ਤੁਹਾਡੇ 6 ਮਹੀਨੇ ਤੋਂ ਘੱਟ ਉਮਰ ਦੇ ਬੱਚੇ ਨੂੰ ≥ 38.0°C (ਗੁਦਾ) ਬੁਖਾਰ ਹੈ, <strong>ਤੁਰੰਤ ਆਪਣੇ ਡਾਕਟਰ ਨਾਲ ਸੰਪਰਕ ਕਰੋ ਜਾਂ ਐਮਰਜੈਂਸੀ ਵਿਭਾਗ ਵਿੱਚ ਜਾਓ।</strong> ਛੋਟੇ ਬੱਚਿਆਂ ਵਿੱਚ ਬੁਖਾਰ ਗੰਭੀਰ ਲਾਗ ਦਾ ਸੰਕੇਤ ਹੋ ਸਕਦਾ ਹੈ ਅਤੇ ਤੁਰੰਤ ਡਾਕਟਰੀ ਜਾਂਚ ਜ਼ਰੂਰੀ ਹੈ।",
     "schedule_header": "ਖੁਰਾਕ ਦਾ ਉਦਾਹਰਣ ਕਾਰਜਕ੍ਰਮ — ਸਵੇਰੇ 8:00 ਵਜੇ ਤੋਂ ਸ਼ੁਰੂ",
@@ -1723,6 +1738,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "Máx. 5 doses/dia",
     "max_doses_advil": "Máx. 4 doses/dia",
     "enter_weight": "Insira o peso",
+    "use_liquid_tag": "Use o líquido para uma dosagem precisa",
     "advil_warning_title": "Ibuprofeno (Advil / Motrin) NÃO é seguro para bebês menores de 6 meses",
     "advil_warning_body_html": "O Ibuprofeno <strong>não</strong> deve ser dado a crianças menores de 6 meses. Para o controle da febre em bebês com menos de 6 meses, <strong>o Acetaminofeno (Tylenol) é a única opção recomendada sem receita</strong> — e apenas com orientação médica para recém-nascidos com menos de 3 meses.<br><br><strong>Importante:</strong> Se o seu bebê com menos de 6 meses tiver febre ≥ 38,0°C (retal), <strong>entre em contato com seu médico ou vá ao pronto-socorro imediatamente.</strong> A febre em bebês pequenos pode indicar infecção grave e requer avaliação médica imediata.",
     "schedule_header": "Exemplo de Cronograma de Dosagem — Começando às 8h00",
@@ -1835,6 +1851,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "Max 5 dosis/araw",
     "max_doses_advil": "Max 4 dosis/araw",
     "enter_weight": "Ilagay ang timbang",
+    "use_liquid_tag": "Gamitin ang likido para sa tamang dosis",
     "advil_warning_title": "Ang Ibuprofen (Advil / Motrin) ay HINDI ligtas para sa mga sanggol na wala pang 6 na buwan",
     "advil_warning_body_html": "Ang Ibuprofen ay <strong>hindi</strong> dapat ibigay sa anumang batang wala pang 6 na buwan. Para sa pamamahala ng lagnat sa mga sanggol na wala pang 6 na buwan, <strong>ang Acetaminophen (Tylenol) ang tanging inirerekomendang gamot na walang reseta</strong> — at sa gabay lamang ng doktor para sa mga bagong silang na wala pang 3 buwan.<br><br><strong>Mahalaga:</strong> Kung ang iyong sanggol na wala pang 6 na buwan ay may lagnat na ≥ 38.0°C (rektal), <strong>makipag-ugnayan agad sa iyong doktor o pumunta sa emergency department.</strong> Ang lagnat sa maliliit na sanggol ay maaaring magpahiwatig ng seryosong impeksyon at nangangailangan ng agarang medikal na pagsusuri.",
     "schedule_header": "Halimbawa ng Iskedyul ng Dosis — Simula ng 8:00 AM",
@@ -1947,6 +1964,7 @@ const TRANSLATIONS = {
     "max_doses_tylenol": "Макс. 5 доз/день",
     "max_doses_advil": "Макс. 4 дози/день",
     "enter_weight": "Введіть вагу",
+    "use_liquid_tag": "Використовуйте сироп для точного дозування",
     "advil_warning_title": "Ібупрофен (Advil / Motrin) НЕ безпечний для немовлят молодше 6 місяців",
     "advil_warning_body_html": "Ібупрофен <strong>не</strong> слід давати дітям молодше 6 місяців. Для лікування жару у немовлят до 6 місяців <strong>Ацетамінофен (Tylenol) — єдиний рекомендований безрецептурний засіб</strong> — і лише під керівництвом лікаря для новонароджених до 3 місяців.<br><br><strong>Важливо:</strong> Якщо у вашого немовляти до 6 місяців жар ≥ 38,0°C (ректально), <strong>негайно зверніться до лікаря або у відділення екстреної допомоги.</strong> Жар у маленьких немовлят може свідчити про серйозну інфекцію і вимагає негайної медичної оцінки.",
     "schedule_header": "Приклад графіку дозування — починаючи з 8:00",
@@ -2146,17 +2164,23 @@ function formatVolume(mL) {
   return mL < 1 ? mL.toFixed(2) : mL % 1 === 0 ? mL.toFixed(0) : mL.toFixed(1);
 }
 
-function formatTablets(n) {
-  const fracs = [[0.25,'¼'],[0.5,'½'],[0.75,'¾']];
-  const whole = Math.floor(n);
-  const frac = n - whole;
-  let bestLabel = null, bestDist = 1;
-  for (const [v, s] of fracs) {
-    const d = Math.abs(frac - v);
-    if (d < bestDist) { bestDist = d; bestLabel = s; }
+function roundTabletCount(n, perUnit, maxSingleMg) {
+  // Round DOWN to the nearest 0.5 tablet by default. If rounding UP to the
+  // next 0.5 increment overshoots the calculated dose by no more than 10%
+  // (and stays within the absolute max single dose), round up instead.
+  const down = Math.floor(n * 2 + 1e-9) / 2;
+  const up = down + 0.5;
+  if (up <= n * 1.10 + 1e-9 && up * perUnit <= maxSingleMg + 1e-9) {
+    return up;
   }
-  if (bestDist < 0.13) return whole === 0 ? bestLabel : whole + ' ' + bestLabel;
-  return n.toFixed(1);
+  return down >= 0.5 ? down : null; // null = less than half a tablet, not administrable
+}
+
+function formatTabletCount(count) {
+  const whole = Math.floor(count);
+  const hasHalf = count % 1 !== 0;
+  if (whole === 0) return '½';
+  return hasHalf ? whole + ' ½' : String(whole);
 }
 
 function toggleAge() {
@@ -2223,12 +2247,25 @@ function buildSchedule(type) {
 }
 
 function buildRow(f, mgDose, drug, isEmpty) {
-  const amtCls = drug === 'tylenol' ? 'tylenol-amt' : 'advil-amt';
-  let amountStr = '—', unitStr = '';
+  let amtCls = drug === 'tylenol' ? 'tylenol-amt' : 'advil-amt';
+  const maxSingleMg = drug === 'tylenol' ? 1000 : 600;
+  let amountStr = '—', unitStr = '', liquidTag = false;
   if (!isEmpty && mgDose !== null) {
     if (f.perUnit) {
-      amountStr = formatTablets(mgDose / f.perUnit);
-      unitStr = f.unitOut;
+      const count = roundTabletCount(mgDose / f.perUnit, f.perUnit, maxSingleMg);
+      if (count === null) {
+        // Dose is under half a unit — this formulation isn't suitable at this weight
+        amountStr = '—';
+        unitStr = '';
+        amtCls = 'pending';
+        liquidTag = true;
+      } else {
+        amountStr = formatTabletCount(count);
+        unitStr = f.unitOut;
+        // Flag when the rounded-down dose delivers < 2/3 of the calculated
+        // target (e.g. < ~10 mg/kg for acetaminophen) — liquid is more accurate
+        if (count * f.perUnit < mgDose * (2 / 3) - 1e-9) liquidTag = true;
+      }
     } else {
       amountStr = formatVolume(mgDose / f.conc);
       unitStr = 'mL';
@@ -2247,6 +2284,7 @@ function buildRow(f, mgDose, drug, isEmpty) {
     <td style="text-align:center">
       <div class="td-amount ${isEmpty ? 'pending' : amtCls}">${isEmpty ? '—' : amountStr}</div>
       <div class="td-unit">${isEmpty ? t('enter_weight') : unitStr}</div>
+      ${liquidTag ? `<div class="td-liquid-tag">${t('use_liquid_tag')}</div>` : ''}
     </td>
     <td>
       <div class="td-freq">${freq}</div>
@@ -2314,5 +2352,29 @@ function calculate() {
   populateLangSelect(saved);
   switchLanguage(saved);
   console.log("[fever-sheet] langSelect options:", document.getElementById('langSelect')?.options?.length);
+
+  /* ─── Bind event handlers (CSP-safe, no inline on* attributes) ─── */
+
+  // Print button
+  const printBtn = document.getElementById('printBtn');
+  if (printBtn) printBtn.addEventListener('click', () => window.print());
+
+  // Weight input → recalculate on every keystroke
+  const weightInput = document.getElementById('weightInput');
+  if (weightInput) weightInput.addEventListener('input', calculate);
+
+  // kg / lbs unit toggle (data-unit on each button)
+  document.querySelectorAll('.unit-btn[data-unit]').forEach(btn => {
+    btn.addEventListener('click', () => setUnit(btn.dataset.unit));
+  });
+
+  // Age toggle (< 6 months)
+  const ageToggle = document.getElementById('ageToggle');
+  if (ageToggle) ageToggle.addEventListener('click', toggleAge);
+
+  // Schedule tabs (data-schedule on each tab)
+  document.querySelectorAll('.sched-tab[data-schedule]').forEach(btn => {
+    btn.addEventListener('click', () => setSchedule(btn.dataset.schedule));
+  });
 })();
 

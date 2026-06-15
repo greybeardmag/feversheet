@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pediatric Fever Dosing Sheet</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌡️</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -30,7 +32,7 @@
       </div>
     </div>
 
-    <button class="print-btn" onclick="window.print()">
+    <button class="print-btn" id="printBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <polyline points="6 9 6 2 18 2 18 9"/>
@@ -72,11 +74,10 @@
         <input class="weight-input" id="weightInput"
                type="number" min="1" max="150" step="0.1"
                data-i18n-placeholder="weight_placeholder"
-               placeholder="—"
-               oninput="calculate()">
+               placeholder="—">
         <div class="unit-toggle">
-          <button class="unit-btn active" id="btnKg" onclick="setUnit('kg')">kg</button>
-          <button class="unit-btn" id="btnLbs" onclick="setUnit('lbs')">lbs</button>
+          <button class="unit-btn active" id="btnKg" data-unit="kg">kg</button>
+          <button class="unit-btn" id="btnLbs" data-unit="lbs">lbs</button>
         </div>
       </div>
     </div>
@@ -84,7 +85,7 @@
     <!-- Age group -->
     <div>
       <label data-i18n="label_age_group">Age Group</label>
-      <button class="age-toggle-btn" id="ageToggle" onclick="toggleAge()">
+      <button class="age-toggle-btn" id="ageToggle">
         <div class="check-circle" id="ageCheck"></div>
         <span data-i18n="age_toggle_text">Child is under 6 months</span>
       </button>
@@ -216,9 +217,9 @@
   <div class="schedule-section" id="scheduleSection">
     <div class="schedule-header" data-i18n="schedule_header">Example Dosing Schedule — Starting at 8:00 AM</div>
     <div class="schedule-tabs">
-      <button class="sched-tab active" onclick="setSchedule('staggered')" data-i18n="sched_tab_staggered">Staggered (Recommended)</button>
-      <button class="sched-tab" onclick="setSchedule('tylenol')" data-i18n="sched_tab_tylenol">Tylenol Only</button>
-      <button class="sched-tab" onclick="setSchedule('alternating')" data-i18n="sched_tab_alternating">Full Alternating</button>
+      <button class="sched-tab active" data-schedule="staggered" data-i18n="sched_tab_staggered">Staggered (Recommended)</button>
+      <button class="sched-tab" data-schedule="tylenol" data-i18n="sched_tab_tylenol">Tylenol Only</button>
+      <button class="sched-tab" data-schedule="alternating" data-i18n="sched_tab_alternating">Full Alternating</button>
     </div>
 
     <!-- Staggered panel -->

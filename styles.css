@@ -1,370 +1,531 @@
-/* ═══════════════════════════════════════════════
-   Pediatric Fever Dosing Sheet — styles.css
-   Original styles preserved; lang selector +
-   RTL overrides appended at bottom.
-═══════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   Pediatric Fever Dosing Sheet — styles.css (monograph redesign)
+
+   DESIGN SYSTEM — "pharmacopoeia monograph"
+   The two drugs are distinguished by RULE STYLE, not just color,
+   so the sheet remains fully legible on black-and-white printers:
+
+     · Acetaminophen (Tylenol)  →  SOLID rules · FILLED markers
+     · Ibuprofen (Advil)        →  DOUBLE rules · HOLLOW markers
+
+   On screen, color reinforces the system (oxblood / amber on a
+   clinical green-teal structural ink). In print, everything
+   collapses to black ink on white paper with zero loss of meaning.
+
+   All class names and IDs are unchanged — script.js untouched.
+═══════════════════════════════════════════════════════════════ */
 
 :root {
-  --red: #C0392B;
-  --red-light: #F9E8E7;
-  --blue: #1A3A5C;
-  --blue-mid: #2563A8;
-  --blue-light: #E8F0FA;
-  --orange: #D9651A;
-  --orange-light: #FEF3E7;
-  --ink: #1C1C1E;
-  --mid: #5A5A6E;
-  --rule: #D8DCE6;
-  --bg: #F4F6FB;
-  --card: #FFFFFF;
-  --shadow: 0 2px 12px rgba(26,58,92,0.08);
+  /* structural ink */
+  --teal:       #194D44;
+  --teal-deep:  #123A33;
+  --teal-soft:  #E9F0ED;
+
+  /* drug identities */
+  --tylenol:       #A52A33;
+  --tylenol-soft:  #F8ECED;
+  --advil:         #96570A;
+  --advil-soft:    #F8EFE0;
+
+  /* neutrals */
+  --ink:   #1B201E;
+  --mid:   #5D6661;
+  --faint: #8A938D;
+  --rule:  #DCE0DB;
+  --bg:    #F3F4F1;
+  --card:  #FFFFFF;
+
+  /* legacy aliases (referenced inline in index.html / script.js) */
+  --red:      var(--tylenol);
+  --blue:     var(--teal);
+  --blue-mid: var(--teal-deep);
+  --orange:   var(--advil);
+
+  --shadow: 0 1px 2px rgba(27,32,30,0.05), 0 4px 16px rgba(27,32,30,0.06);
+  --radius: 10px;
+
+  --font-ui:   'Archivo', 'Helvetica Neue', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+html { -webkit-text-size-adjust: 100%; }
+
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-ui);
   background: var(--bg);
   color: var(--ink);
   min-height: 100vh;
   font-size: 14px;
+  line-height: 1.45;
+}
+
+button, input, select { font-family: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 
 .screen-wrapper {
-  max-width: 880px;
+  max-width: 920px;
   margin: 0 auto;
-  padding: 28px 20px 60px;
+  padding: 36px 24px 64px;
 }
 
-/* ── HEADER ── */
+/* ═══════════════ MASTHEAD ═══════════════
+   Signature motif: the monograph double rule —
+   a heavy rule paired with a hairline beneath it.   */
 header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 18px;
+  gap: 20px;
   flex-wrap: wrap;
+  position: relative;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  border-bottom: 3px solid var(--ink);
 }
+header::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: -7px;
+  height: 1px;
+  background: var(--ink);
+}
+
 .header-left h1 {
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: var(--blue);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  font-size: 2.05rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  color: var(--ink);
+  text-wrap: balance;
 }
-.header-left h1 span { color: var(--red); }
+.header-left h1 span[data-i18n="header_title_highlight"] { color: var(--tylenol); }
+
 .header-left p {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   color: var(--mid);
-  margin-top: 5px;
-  max-width: 500px;
-  line-height: 1.5;
+  margin-top: 9px;
+  max-width: 540px;
+  line-height: 1.55;
 }
 
 .print-btn {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 7px;
-  background: var(--blue);
+  gap: 8px;
+  background: var(--teal);
   color: #fff;
   border: none;
-  border-radius: 9px;
-  padding: 9px 18px;
-  font-family: 'Inter', sans-serif;
+  border-radius: 8px;
+  padding: 10px 20px;
   font-size: 0.82rem;
   font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.15s, transform 0.1s;
 }
-.print-btn:hover { background: var(--blue-mid); }
+.print-btn:hover  { background: var(--teal-deep); }
+.print-btn:active { transform: translateY(1px); }
 .print-btn svg { width: 15px; height: 15px; }
 
-/* ── FEVER DEFINITION BOX ── */
+/* Language selector */
+.lang-selector-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.lang-selector-label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+}
+#langSelect {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+  padding: 5px 10px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+  max-width: 210px;
+}
+#langSelect:hover, #langSelect:focus { border-color: var(--teal); }
+
+/* ═══════════════ FEVER DEFINITION ═══════════════ */
 .fever-box {
-  background: #fff;
-  border: 1.5px solid #b8cfe8;
-  border-left: 4px solid var(--blue-mid);
-  border-radius: 10px;
-  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-inline-start: 4px solid var(--teal);
+  border-radius: var(--radius);
+  padding: 16px 20px;
   margin-bottom: 18px;
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 12px 16px;
   align-items: start;
+  box-shadow: var(--shadow);
 }
-.fever-icon { font-size: 1.6rem; line-height: 1; margin-top: 2px; }
+.fever-icon { font-size: 1.55rem; line-height: 1; margin-top: 2px; }
 .fever-box h3 {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: var(--blue-mid);
-  margin-bottom: 6px;
+  color: var(--teal);
+  margin-bottom: 8px;
 }
 .fever-temps {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .temp-chip {
-  background: var(--blue-light);
+  background: var(--teal-soft);
+  border: 1px solid transparent;
   border-radius: 7px;
-  padding: 4px 10px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--blue);
+  padding: 4px 11px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--teal-deep);
 }
-.temp-chip span { font-weight: 400; color: var(--mid); font-size: 0.72rem; margin-inline-start: 4px; }
-.fever-note {
-  font-size: 0.75rem;
+.temp-chip span {
+  font-family: var(--font-ui);
+  font-weight: 500;
   color: var(--mid);
-  line-height: 1.6;
+  font-size: 0.72rem;
+  margin-inline-start: 5px;
 }
-.fever-note strong { color: var(--ink); }
+.fever-note {
+  font-size: 0.76rem;
+  color: var(--mid);
+  line-height: 1.62;
+}
+.fever-note strong { color: var(--ink); font-weight: 700; }
 
-/* ── INPUT CARD ── */
+/* ═══════════════ INPUT PANEL ═══════════════ */
 .input-card {
-  background: var(--blue);
-  border-radius: 16px;
-  padding: 22px 26px;
+  background: var(--teal);
+  background: linear-gradient(140deg, var(--teal) 0%, var(--teal-deep) 100%);
+  border-radius: 14px;
+  padding: 24px 28px;
   margin-bottom: 18px;
   display: flex;
   align-items: flex-end;
-  gap: 24px;
+  gap: 28px;
   flex-wrap: wrap;
+  box-shadow: var(--shadow);
 }
 .input-card label {
-  color: rgba(255,255,255,0.7);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   display: block;
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 }
-.weight-row { display: flex; align-items: center; gap: 9px; }
+.weight-row { display: flex; align-items: center; gap: 10px; }
 .weight-input {
-  background: rgba(255,255,255,0.13);
-  border: 1.5px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.3);
   border-radius: 9px;
   color: #fff;
-  font-family: 'Inter', sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  width: 100px;
-  padding: 5px 10px;
+  font-family: var(--font-mono);
+  font-size: 1.9rem;
+  font-weight: 600;
+  width: 108px;
+  padding: 6px 10px;
   outline: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, background 0.15s;
   text-align: center;
 }
 .weight-input::placeholder { color: rgba(255,255,255,0.3); }
-.weight-input:focus { border-color: rgba(255,255,255,0.65); }
+.weight-input:focus { border-color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.16); }
 
 .unit-toggle {
   display: flex;
-  border-radius: 7px;
+  border-radius: 8px;
   overflow: hidden;
-  border: 1.5px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.3);
 }
 .unit-btn {
   background: transparent;
   border: none;
-  color: rgba(255,255,255,0.5);
-  font-family: 'Inter', sans-serif;
+  color: rgba(255,255,255,0.55);
   font-size: 0.78rem;
   font-weight: 600;
-  padding: 6px 13px;
+  padding: 7px 14px;
   cursor: pointer;
   transition: all 0.15s;
 }
-.unit-btn.active { background: rgba(255,255,255,0.2); color: #fff; }
+.unit-btn.active { background: #fff; color: var(--teal-deep); }
 
-/* Age Toggle */
+/* Age toggle */
 .age-toggle-btn {
   display: flex;
   align-items: center;
-  gap: 9px;
-  background: rgba(255,255,255,0.12);
-  border: 1.5px solid rgba(255,255,255,0.25);
+  gap: 10px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.3);
   border-radius: 9px;
-  color: rgba(255,255,255,0.8);
-  font-family: 'Inter', sans-serif;
+  color: rgba(255,255,255,0.85);
   font-size: 0.8rem;
   font-weight: 500;
-  padding: 9px 16px;
+  padding: 10px 16px;
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
 }
+.age-toggle-btn:hover { background: rgba(255,255,255,0.16); }
 .age-toggle-btn.under6 {
-  background: rgba(192,57,43,0.45);
-  border-color: rgba(255,140,120,0.5);
-  color: #fff;
+  background: rgba(255,255,255,0.92);
+  border-color: #fff;
+  color: var(--tylenol);
+  font-weight: 700;
 }
 .check-circle {
   width: 18px; height: 18px;
   border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.4);
+  border: 2px solid rgba(255,255,255,0.45);
   display: flex; align-items: center; justify-content: center;
   font-size: 10px; font-weight: 700;
   flex-shrink: 0;
   transition: all 0.2s;
 }
 .age-toggle-btn.under6 .check-circle {
-  background: #fff;
-  border-color: #fff;
-  color: var(--red);
+  background: var(--tylenol);
+  border-color: var(--tylenol);
+  color: #fff;
 }
 
+/* Live dose readouts */
 .dose-display { text-align: end; }
 .dose-display .dose-label {
   color: rgba(255,255,255,0.6);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.07em;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .dose-display .dose-value {
-  font-size: 1.45rem;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
   font-weight: 700;
   color: #fff;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 .dose-display .dose-sub {
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.5);
-  margin-top: 1px;
+  font-size: 0.67rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 2px;
 }
 
 .input-age-note {
   width: 100%;
   border-radius: 8px;
-  padding: 8px 14px;
-  font-size: 0.74rem;
-  line-height: 1.45;
+  padding: 9px 14px;
+  font-size: 0.76rem;
+  line-height: 1.5;
 }
 .input-age-note.hidden { display: none; }
-.input-age-note.warn { background: rgba(192,57,43,0.3); color: #ffd5d1; }
+.input-age-note.warn {
+  background: rgba(0,0,0,0.28);
+  border: 1px solid rgba(255,205,200,0.5);
+  color: #FFD9D5;
+  font-weight: 500;
+}
 
-/* ── MAX BANNER ── */
+/* ═══════════════ MAX BANNER ═══════════════ */
 .max-banner {
-  border-radius: 12px;
-  padding: 14px 18px;
-  margin-bottom: 18px;
+  border-radius: var(--radius);
+  padding: 14px 0;
+  margin-bottom: 24px;
   display: flex;
-  gap: 16px;
   flex-wrap: wrap;
-  background: var(--blue-light);
-  border: 1px solid #b8cfe8;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow);
 }
-.max-item { flex: 1; min-width: 130px; }
+.max-item {
+  flex: 1;
+  min-width: 150px;
+  padding: 2px 20px;
+  border-inline-start: 1px solid var(--rule);
+}
+.max-item:first-child { border-inline-start: none; }
 .max-label {
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--blue-mid);
-  margin-bottom: 3px;
+  color: var(--faint);
+  margin-bottom: 4px;
 }
-.max-val { font-size: 1.15rem; font-weight: 700; color: var(--blue); }
-.max-sub { font-size: 0.68rem; color: var(--mid); margin-top: 1px; }
+.max-val {
+  font-family: var(--font-mono);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.max-sub { font-size: 0.68rem; color: var(--mid); margin-top: 2px; }
 
-/* ── DRUG SECTIONS ── */
-.drug-section { margin-bottom: 22px; }
+/* ═══════════════ DRUG SECTIONS ═══════════════
+   Identity system:
+   Tylenol → solid rule, filled badge
+   Advil   → double rule, outlined badge          */
+.drug-section { margin-bottom: 26px; }
+
 .drug-header {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 0;
+  padding-bottom: 10px;
   flex-wrap: wrap;
 }
 .drug-badge {
   border-radius: 7px;
-  padding: 5px 13px;
+  padding: 5px 14px;
   font-size: 0.88rem;
   font-weight: 700;
+  letter-spacing: 0.01em;
 }
-.badge-tylenol { background: var(--red); color: #fff; }
-.badge-advil   { background: var(--orange); color: #fff; }
-.drug-generic { font-size: 0.78rem; color: var(--mid); }
-.drug-dose-range { margin-inline-start: auto; font-size: 0.76rem; color: var(--mid); text-align: end; }
-.drug-dose-range strong { color: var(--ink); font-weight: 600; }
+.badge-tylenol {
+  background: var(--tylenol);
+  color: #fff;
+  border: 1.5px solid var(--tylenol);
+}
+.badge-advil {
+  background: #fff;
+  color: var(--advil);
+  border: 1.5px solid var(--advil);
+}
+.drug-generic { font-size: 0.79rem; color: var(--mid); }
+.drug-generic em { font-style: normal; font-weight: 700; color: var(--advil); }
+.drug-dose-range {
+  margin-inline-start: auto;
+  font-size: 0.76rem;
+  color: var(--mid);
+  text-align: end;
+}
+.drug-dose-range strong {
+  font-family: var(--font-mono);
+  color: var(--ink);
+  font-weight: 600;
+}
 
-/* ── DOSING TABLE ── */
+/* ═══════════════ DOSING TABLES ═══════════════ */
 .dose-table-wrap {
   background: var(--card);
-  border-radius: 12px;
-  border: 1.5px solid var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
 }
 .dose-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.82rem;
+  font-size: 0.83rem;
 }
-.dose-table thead tr {
-  background: var(--bg);
-}
-.dose-table.tylenol thead tr { border-top: 3px solid var(--red); }
-.dose-table.advil   thead tr { border-top: 3px solid var(--orange); }
+/* drug rule signature on the table head */
+.dose-table.tylenol thead tr { border-top: 4px solid var(--tylenol); }
+.dose-table.advil   thead tr { border-top: 4px double var(--advil); border-top-width: 5px; }
+
+.dose-table thead tr { background: #FAFBF9; }
 
 .dose-table th {
-  padding: 9px 14px;
+  padding: 10px 16px;
   text-align: start;
-  font-size: 0.67rem;
+  font-size: 0.64rem;
   font-weight: 700;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--mid);
-  border-bottom: 1.5px solid var(--rule);
+  color: var(--faint);
+  border-bottom: 1px solid var(--rule);
   white-space: nowrap;
 }
 .dose-table th.col-amount { text-align: center; }
 
 .dose-table td {
-  padding: 10px 14px;
+  padding: 11px 16px;
   vertical-align: middle;
   border-bottom: 1px solid var(--rule);
 }
 .dose-table tbody tr:last-child td { border-bottom: none; }
-.dose-table tbody tr:hover { background: #fafbfd; }
+.dose-table tbody tr:hover { background: #FAFBF9; }
 
 .td-formulation { font-weight: 600; color: var(--ink); }
-.td-conc { font-size: 0.75rem; color: var(--mid); margin-top: 1px; }
+.td-conc {
+  font-size: 0.73rem;
+  font-family: var(--font-mono);
+  color: var(--mid);
+  margin-top: 2px;
+}
 .td-note-tag {
   display: inline-block;
-  margin-top: 3px;
   background: var(--bg);
-  border-radius: 4px;
-  padding: 1px 6px;
-  font-size: 0.65rem;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: 2px 8px;
+  font-size: 0.68rem;
   color: var(--mid);
   font-weight: 500;
 }
 
 .td-amount {
   text-align: center;
-  font-size: 1.35rem;
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
   font-weight: 700;
   line-height: 1;
   white-space: nowrap;
 }
-.td-amount.tylenol-amt { color: var(--red); }
-.td-amount.advil-amt   { color: var(--orange); }
-.td-amount.pending     { color: var(--rule); font-size: 0.8rem; font-weight: 400; }
+.td-amount.tylenol-amt { color: var(--tylenol); }
+.td-amount.advil-amt   { color: var(--advil); }
+.td-amount.pending     { color: var(--rule); font-size: 0.85rem; font-weight: 500; }
 
 .td-unit {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--mid);
-  margin-top: 2px;
+  margin-top: 3px;
   text-align: center;
 }
 
+.td-liquid-tag {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 2px 8px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--mid);
+  border: 1px dashed var(--faint);
+  border-radius: 5px;
+  max-width: 130px;
+}
+
 .td-freq {
-  font-size: 0.78rem;
+  font-size: 0.79rem;
   font-weight: 600;
   color: var(--ink);
   white-space: nowrap;
@@ -373,74 +534,95 @@ header {
   font-size: 0.7rem;
   color: var(--mid);
   font-weight: 400;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
-/* ── ADVIL WARNING ── */
+/* ═══════════════ ADVIL < 6 MO WARNING ═══════════════ */
 .advil-warning {
-  background: #FFF4E5;
-  border: 2px solid var(--orange);
-  border-radius: 13px;
+  background: var(--card);
+  border: 2px solid var(--tylenol);
+  outline: 1px solid var(--tylenol);
+  outline-offset: 3px;
+  border-radius: var(--radius);
   padding: 20px 24px;
-  margin-bottom: 20px;
+  margin: 4px 2px 24px;
   display: none;
   align-items: flex-start;
   gap: 16px;
 }
 .advil-warning.show { display: flex; }
-.advil-warning-icon { font-size: 2rem; flex-shrink: 0; }
-.advil-warning h3 { font-size: 0.95rem; font-weight: 700; color: #7D3600; margin-bottom: 7px; }
-.advil-warning p { font-size: 0.8rem; color: #7D3600; line-height: 1.6; }
+.advil-warning-icon { font-size: 1.9rem; flex-shrink: 0; }
+.advil-warning h3 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--tylenol);
+  margin-bottom: 8px;
+}
+.advil-warning p { font-size: 0.8rem; color: var(--ink); line-height: 1.62; }
 .advil-warning p strong { font-weight: 700; }
 
-/* ── SCHEDULE ── */
-.schedule-section { margin-bottom: 20px; }
+/* ═══════════════ SCHEDULE ═══════════════ */
+.schedule-section { margin-bottom: 24px; }
 .schedule-header {
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: var(--mid);
-  margin-bottom: 10px;
+  color: var(--ink);
+  padding-bottom: 7px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--ink);
+  position: relative;
 }
+.schedule-header::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: -4px;
+  height: 1px;
+  background: var(--ink);
+}
+
 .schedule-tabs { display: flex; gap: 7px; margin-bottom: 12px; flex-wrap: wrap; }
 .sched-tab {
   background: var(--card);
-  border: 1.5px solid var(--rule);
+  border: 1px solid var(--rule);
   border-radius: 8px;
-  padding: 6px 14px;
-  font-family: 'Inter', sans-serif;
+  padding: 7px 15px;
   font-size: 0.76rem;
   font-weight: 600;
   color: var(--mid);
   cursor: pointer;
   transition: all 0.15s;
 }
-.sched-tab.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+.sched-tab:hover { border-color: var(--teal); color: var(--teal); }
+.sched-tab.active { background: var(--teal); border-color: var(--teal); color: #fff; }
 
 .schedule-card {
   background: var(--card);
-  border-radius: 12px;
-  border: 1.5px solid var(--rule);
-  padding: 16px 18px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 18px 20px;
   box-shadow: var(--shadow);
 }
-.schedule-card h4 { font-size: 0.82rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-.sched-desc { font-size: 0.74rem; color: var(--mid); margin-bottom: 14px; line-height: 1.55; }
+.schedule-card h4 { font-size: 0.85rem; font-weight: 700; color: var(--ink); margin-bottom: 5px; }
+.sched-desc { font-size: 0.75rem; color: var(--mid); margin-bottom: 16px; line-height: 1.58; max-width: 660px; }
 
-/* Timeline */
+/* Timeline — filled dot = Tylenol, hollow ring = Advil */
 .timeline { display: flex; flex-direction: column; }
 
 .tl-row { display: flex; align-items: stretch; }
 .tl-time {
-  width: 60px;
+  width: 64px;
   flex-shrink: 0;
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 0.69rem;
+  font-weight: 600;
   color: var(--mid);
   padding-top: 9px;
-  padding-inline-end: 10px;
+  padding-inline-end: 12px;
   text-align: end;
+  white-space: nowrap;
 }
 .tl-spine {
   width: 22px;
@@ -450,185 +632,285 @@ header {
   align-items: center;
 }
 .tl-dot {
-  width: 11px; height: 11px;
+  width: 12px; height: 12px;
   border-radius: 50%;
   margin-top: 9px;
   flex-shrink: 0;
-  border: 2px solid #fff;
 }
-.tl-dot.t-dot    { background: var(--red);    box-shadow: 0 0 0 2px #f0c5c2; }
-.tl-dot.a-dot    { background: var(--orange);  box-shadow: 0 0 0 2px #fcd9b5; }
+.tl-dot.t-dot {
+  background: var(--tylenol);
+  border: 2px solid var(--tylenol);
+}
+.tl-dot.a-dot {
+  background: #fff;
+  border: 2.5px solid var(--advil);
+}
 .tl-dot.both-dot {
-  background: linear-gradient(135deg, var(--red) 50%, var(--orange) 50%);
-  box-shadow: 0 0 0 2px #e0d0c0;
+  background: linear-gradient(135deg, var(--tylenol) 50%, #fff 50%);
+  border: 2px solid var(--ink);
 }
-.tl-line { width: 2px; flex: 1; background: var(--rule); min-height: 8px; }
+.tl-line { width: 1.5px; flex: 1; background: var(--rule); min-height: 10px; }
 .tl-row:last-child .tl-line { display: none; }
-.tl-content { flex: 1; padding: 5px 0 13px 10px; }
-.tl-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 3px; }
+.tl-content { flex: 1; padding: 5px 0 15px 12px; }
+.tl-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 4px; }
 .tl-pill {
   border-radius: 5px;
-  padding: 3px 9px;
+  padding: 3px 10px;
   font-size: 0.7rem;
   font-weight: 700;
 }
-.tl-pill.t { background: var(--red-light); color: var(--red); }
-.tl-pill.a { background: var(--orange-light); color: var(--orange); }
-.tl-note { font-size: 0.68rem; color: var(--mid); }
+.tl-pill.t { background: var(--tylenol); color: #fff; border: 1px solid var(--tylenol); }
+.tl-pill.a { background: #fff; color: var(--advil); border: 1px solid var(--advil); }
+.tl-note { font-size: 0.7rem; color: var(--mid); }
 
-/* ── SAFETY CARDS ── */
+/* ═══════════════ SAFETY CARDS ═══════════════ */
 .safety-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 22px;
 }
-.safety-card { border-radius: 11px; padding: 13px 15px; font-size: 0.74rem; line-height: 1.55; }
-.safety-card.tylenol-safe { background: var(--red-light); border: 1px solid #f0c5c2; }
-.safety-card.advil-safe   { background: var(--orange-light); border: 1px solid #fcd9b5; }
+.safety-card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 15px 17px;
+  font-size: 0.75rem;
+  line-height: 1.58;
+  box-shadow: var(--shadow);
+}
+.safety-card.tylenol-safe { border-inline-start: 4px solid var(--tylenol); }
+.safety-card.advil-safe   { border-inline-start: 4px double var(--advil); border-inline-start-width: 5px; }
 .safety-card h4 {
-  font-size: 0.67rem;
+  font-size: 0.64rem;
   font-weight: 700;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
-.safety-card.tylenol-safe h4 { color: var(--red); }
-.safety-card.advil-safe h4   { color: var(--orange); }
-.safety-card ul { padding-inline-start: 14px; color: var(--mid); }
-.safety-card li { margin-bottom: 3px; }
+.safety-card.tylenol-safe h4 { color: var(--tylenol); }
+.safety-card.advil-safe h4   { color: var(--advil); }
+.safety-card ul { padding-inline-start: 15px; color: var(--mid); }
+.safety-card li { margin-bottom: 4px; }
+.safety-card li strong { color: var(--ink); }
 
-/* ── FOOTER ── */
+/* ═══════════════ FOOTER ═══════════════ */
 footer {
-  margin-top: 24px;
-  padding-top: 14px;
-  border-top: 1px solid var(--rule);
+  margin-top: 26px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ink);
+  position: relative;
   font-size: 0.67rem;
   color: var(--mid);
   line-height: 1.6;
 }
+footer::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 3px;
+  height: 1px;
+  background: var(--rule);
+}
 footer strong { color: var(--ink); }
+footer.no-print { border-top: none; margin-top: 10px; padding-top: 0; }
+footer.no-print::before { display: none; }
 
-/* ══════════════════════════════════════════
-   LANGUAGE SELECTOR
-══════════════════════════════════════════ */
-.lang-selector-wrap {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 8px;
+/* ═══════════════ RESPONSIVE ═══════════════ */
+@media (max-width: 680px) {
+  .screen-wrapper { padding: 24px 14px 48px; }
+  .header-left h1 { font-size: 1.6rem; }
+  .input-card { gap: 18px; padding: 20px; }
+  .dose-display { text-align: start; }
+  .dose-table-wrap { overflow-x: auto; }
+  .dose-table { min-width: 560px; }
+  .safety-grid { grid-template-columns: 1fr; }
+  .max-item { min-width: 46%; padding: 8px 16px; }
+  .max-item:nth-child(odd) { border-inline-start: none; }
 }
-.lang-selector-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--mid);
-  white-space: nowrap;
-}
-#langSelect {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--ink);
-  background: var(--card);
-  border: 1.5px solid var(--rule);
-  border-radius: 7px;
-  padding: 5px 10px;
-  cursor: pointer;
-  outline: none;
-  transition: border-color 0.15s;
-  max-width: 200px;
-}
-#langSelect:focus { border-color: var(--blue-mid); }
-#langSelect:hover { border-color: var(--blue-mid); }
 
-/* ══════════════════════════════════════════
-   RIGHT-TO-LEFT (Arabic, Farsi, Urdu)
-══════════════════════════════════════════ */
+/* ═══════════════ RTL (Arabic · Farsi · Urdu) ═══════════════ */
 [dir="rtl"] body {
-  font-family: 'Noto Sans Arabic', 'Segoe UI', 'Inter', sans-serif;
+  font-family: 'Noto Sans Arabic', var(--font-ui);
 }
+[dir="rtl"] .header-left h1,
+[dir="rtl"] .print-btn,
+[dir="rtl"] .sched-tab,
+[dir="rtl"] button {
+  font-family: 'Noto Sans Arabic', var(--font-ui);
+}
+[dir="rtl"] .header-left h1 { letter-spacing: 0; }
 
-/* Flip the fever box border accent */
-[dir="rtl"] .fever-box {
-  border-left: 1.5px solid #b8cfe8;
-  border-right: 4px solid var(--blue-mid);
-}
+[dir="rtl"] .tl-row { flex-direction: row; } /* logical props already flip */
+[dir="rtl"] .tl-content { padding: 5px 12px 15px 0; }
 
-/* Header: keep logo left, controls right — reverse for RTL */
-[dir="rtl"] header {
-  flex-direction: row-reverse;
-}
-[dir="rtl"] .header-left {
-  text-align: start;
-}
+[dir="rtl"] .dose-table th { text-align: start; }
+[dir="rtl"] .safety-card ul { padding-inline-start: 15px; padding-inline-end: 0; }
 
-/* Input card: align dose displays to start (left in LTR = right in RTL) */
-[dir="rtl"] .dose-display {
-  text-align: start;
-}
-
-/* Drug dose range: margin-inline-start already handles this via logical props */
-
-/* Timeline: flip the time column to the right side */
-[dir="rtl"] .tl-row {
-  flex-direction: row-reverse;
-}
-[dir="rtl"] .tl-time {
-  text-align: start;
-  padding-inline-end: 0;
-  padding-inline-start: 10px;
-}
-[dir="rtl"] .tl-content {
-  padding: 5px 10px 13px 0;
-}
-
-/* Table headers */
-[dir="rtl"] .dose-table th {
-  text-align: start;
-}
-
-/* Safety list bullets on the correct side */
-[dir="rtl"] .safety-card ul {
-  padding-inline-start: 14px;
-  padding-inline-end: 0;
-}
-
-/* ══════════════════════════════════════════
-   PRINT
-══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   PRINT — designed for BLACK & WHITE laser printers.
+   All color collapses to black ink. Drug identity survives via:
+     Tylenol → solid rules, filled badge/dots/pills
+     Advil   → double rules, outlined badge/dots/pills
+═══════════════════════════════════════════════════════════════ */
 @media print {
-   .no-print { display: none !important; }
-  @page { size: letter portrait; margin: 13mm 13mm 13mm 13mm; }
+  @page { size: letter portrait; margin: 11mm 12mm; }
+
+  :root {
+    --teal: #000; --teal-deep: #000; --teal-soft: #fff;
+    --tylenol: #000; --tylenol-soft: #fff;
+    --advil: #000; --advil-soft: #fff;
+    --ink: #000; --mid: #333; --faint: #444;
+    --rule: #999; --bg: #fff; --card: #fff;
+    --shadow: none;
+  }
+
+  .no-print { display: none !important; }
+
   body {
     background: #fff !important;
-    font-size: 9pt;
+    font-size: 8.5pt;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
   .screen-wrapper { padding: 0; max-width: 100%; }
+
+  /* hide interactive chrome */
   .print-btn,
   .schedule-tabs,
-  .age-toggle-btn,
   .lang-selector-wrap { display: none !important; }
-  header { margin-bottom: 9pt; }
-  .header-left h1 { font-size: 15pt; }
-  .fever-box { margin-bottom: 9pt; }
-  .input-card { padding: 10pt 12pt; margin-bottom: 9pt; gap: 12pt; }
-  .weight-input { font-size: 14pt; width: 68pt; }
-  .form-grid { grid-template-columns: repeat(4, 1fr); gap: 5pt; }
-  .form-card { padding: 7pt 9pt; }
-  .form-amount { font-size: 12pt; }
-  .dose-table th, .dose-table td { padding: 6pt 9pt; }
-  .dose-table { font-size: 8pt; }
-  .td-amount { font-size: 11pt; }
-  .safety-grid { gap: 6pt; margin-bottom: 9pt; }
-  .safety-card { padding: 7pt 9pt; }
-  .max-banner { padding: 8pt 11pt; margin-bottom: 9pt; }
-  .drug-section { margin-bottom: 10pt; }
-  .schedule-card { padding: 9pt 11pt; }
-  .schedule-section { margin-bottom: 10pt; }
+
+  /* masthead */
+  header { padding-bottom: 8pt; margin-bottom: 10pt; border-bottom: 2pt solid #000; }
+  header::after { bottom: -3pt; background: #000; }
+  .header-left h1 { font-size: 16pt; color: #000; }
+  .header-left h1 span[data-i18n="header_title_highlight"] { color: #000; }
+  .header-left p { font-size: 7.5pt; color: #333; margin-top: 4pt; }
+
+  /* fever box */
+  .fever-box {
+    border: 1pt solid #000;
+    border-inline-start: 3pt solid #000;
+    box-shadow: none;
+    padding: 8pt 11pt;
+    margin-bottom: 8pt;
+    break-inside: avoid;
+  }
+  .fever-box h3 { color: #000; }
+  .temp-chip { background: #fff !important; border: 0.75pt solid #000; color: #000; padding: 2pt 7pt; }
+  .temp-chip span { color: #333; }
+  .fever-note { color: #222; font-size: 7pt; }
+
+  /* input panel → white card with black border, black text */
+  .input-card {
+    background: #fff !important;
+    border: 1.25pt solid #000;
+    box-shadow: none;
+    border-radius: 6pt;
+    padding: 9pt 12pt;
+    margin-bottom: 8pt;
+    gap: 14pt;
+    break-inside: avoid;
+  }
+  .input-card label { color: #444; }
+  .weight-input {
+    background: #fff !important;
+    border: 1pt solid #000;
+    color: #000;
+    font-size: 13pt;
+    width: 64pt;
+  }
+  .unit-toggle { border-color: #000; }
+  .unit-btn { color: #888; }
+  .unit-btn.active { background: #fff !important; color: #000 !important; font-weight: 800; text-decoration: underline; }
+  .age-toggle-btn {
+    background: #fff !important;
+    border: 0.75pt solid #000;
+    color: #000;
+    pointer-events: none;
+  }
+  .age-toggle-btn.under6 { background: #fff !important; color: #000; }
+  .check-circle { border-color: #000; color: #000; }
+  .age-toggle-btn.under6 .check-circle { background: #fff; border: 2pt solid #000; color: #000; }
+  .dose-display .dose-label { color: #444; }
+  .dose-display .dose-value { color: #000; font-size: 12pt; }
+  .dose-display .dose-sub { color: #333; }
+  .input-age-note.warn {
+    background: #fff !important;
+    border: 1pt solid #000;
+    color: #000;
+    font-weight: 600;
+  }
+
+  /* max banner */
+  .max-banner { border: 1pt solid #000; box-shadow: none; padding: 6pt 0; margin-bottom: 9pt; break-inside: avoid; }
+  .max-item { padding: 1pt 10pt; border-inline-start: 0.5pt solid #777; }
+  .max-item:first-child { border-inline-start: none; }
+  .max-label { color: #444; }
+  .max-val { color: #000; font-size: 10pt; }
+  .max-sub { color: #333; }
+
+  /* drug sections — the rule system does the work */
+  .drug-section { margin-bottom: 10pt; break-inside: avoid; }
+  .drug-header { padding-bottom: 4pt; }
+  .badge-tylenol { background: #fff !important; color: #000 !important; border: 2pt solid #000; font-weight: 800; }
+  .badge-advil   { background: #fff !important; color: #000 !important; border: 3.5pt double #000; font-weight: 800; }
+  .drug-generic, .drug-generic em { color: #000; }
+  .drug-dose-range { color: #333; }
+  .drug-dose-range strong { color: #000; }
+
+  .dose-table-wrap { border: 1pt solid #000; box-shadow: none; border-radius: 4pt; }
+  .dose-table { font-size: 7.5pt; }
+  .dose-table.tylenol thead tr { border-top: 2.5pt solid #000; }
+  .dose-table.advil   thead tr { border-top: 4pt double #000; }
+  .dose-table thead tr { background: #fff !important; }
+  .dose-table th { padding: 4pt 8pt; color: #000; border-bottom: 0.75pt solid #000; }
+  .dose-table td { padding: 4pt 8pt; border-bottom: 0.5pt solid #888; }
+  .td-amount { font-size: 10pt; }
+  .td-amount.tylenol-amt, .td-amount.advil-amt { color: #000; }
+  .td-conc, .td-unit, .td-freq-sub { color: #333; }
+  .td-liquid-tag { border: 0.5pt dashed #000; color: #000; font-size: 5.8pt; padding: 1pt 5pt; }
+  .td-note-tag { background: #fff !important; border: 0.5pt solid #777; color: #222; }
+
+  /* advil warning */
+  .advil-warning {
+    border: 1.5pt solid #000;
+    outline: 0.75pt solid #000;
+    outline-offset: 2pt;
+    padding: 8pt 11pt;
+    margin: 3pt 2pt 9pt;
+    break-inside: avoid;
+  }
+  .advil-warning h3, .advil-warning p { color: #000; }
+
+  /* schedule — only active panel prints */
+  .schedule-section { margin-bottom: 9pt; break-inside: avoid; }
+  .schedule-header { color: #000; border-bottom-color: #000; }
+  .schedule-header::after { background: #000; }
   .sched-panel { display: none !important; }
   .sched-panel.active-panel { display: block !important; }
-  footer { font-size: 6.5pt; margin-top: 9pt; }
-  .advil-warning { padding: 10pt 13pt; }
+  .schedule-card { border: 1pt solid #000; box-shadow: none; padding: 8pt 11pt; }
+  .sched-desc { font-size: 6.8pt; margin-bottom: 8pt; }
+  .tl-time { font-size: 6.5pt; color: #000; }
+  .tl-dot.t-dot { background: #fff; border: 5px solid #000; }   /* reads as filled */
+  .tl-dot.a-dot { background: #fff !important; border: 1.5pt solid #000; } /* hollow */
+  .tl-line { background: #999; }
+  .tl-pill.t { background: #fff !important; color: #000 !important; border: 1.5pt solid #000; font-weight: 800; }
+  .tl-pill.a { background: #fff !important; color: #000 !important; border: 3pt double #000; font-weight: 800; }
+  .tl-note { color: #222; font-size: 6.5pt; }
+  .tl-content { padding-bottom: 8pt; }
+
+  /* safety cards */
+  .safety-grid { gap: 7pt; margin-bottom: 8pt; break-inside: avoid; }
+  .safety-card { border: 0.75pt solid #000; box-shadow: none; padding: 6pt 9pt; font-size: 6.9pt; }
+  .safety-card.tylenol-safe { border-inline-start: 3pt solid #000; }
+  .safety-card.advil-safe   { border-inline-start: 4.5pt double #000; }
+  .safety-card h4, .safety-card li strong { color: #000; }
+  .safety-card ul { color: #222; }
+
+  footer { font-size: 6pt; margin-top: 8pt; padding-top: 5pt; border-top-color: #000; color: #333; }
+  footer::before { background: #999; top: 1.5pt; }
+  footer strong { color: #000; }
+
+  a { color: #000; text-decoration: none; }
 }

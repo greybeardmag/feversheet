@@ -5,14 +5,12 @@
   "header_title_suffix": "Dosing Sheet",
   "header_subtitle": "Enter your child's weight and age group to calculate correct doses of Acetaminophen (Tylenol) and Ibuprofen (Advil/Motrin) across all formulations.",
   "print_btn": "Print Sheet",
-
   "fever_box_heading": "What is a Fever?",
   "temp_rectal": "Rectal (most accurate)",
   "temp_temporal": "Temporal / Ear",
   "temp_oral": "Oral",
   "temp_axillary": "Axillary (least accurate)",
   "fever_note_html": "<strong>When to give fever medication:</strong> You may give Tylenol or Advil when your child has a confirmed fever <em>and</em> appears uncomfortable, irritable, or is having difficulty sleeping or eating. A fever alone does not always require medication — it is part of the body's natural immune response. <strong>Seek medical attention if:</strong> your child is under 3 months with any fever, the fever lasts more than 2–3 days, your child appears very unwell or has difficulty breathing, a febrile seizure occurs, or you are concerned for any reason.",
-
   "label_weight": "Child's Weight",
   "label_age_group": "Age Group",
   "age_toggle_text": "Child is under 6 months",
@@ -21,7 +19,6 @@
   "label_advil_dose": "Advil dose",
   "dose_sub_advil": "10 mg/kg per dose",
   "weight_placeholder": "—",
-
   "max_tylenol_single_label": "Tylenol — Max Single Dose",
   "max_tylenol_single_sub": "Absolute max 1,000 mg/dose",
   "max_tylenol_daily_label": "Tylenol — Max Daily",
@@ -30,61 +27,49 @@
   "max_advil_single_sub": "Absolute max 600 mg/dose",
   "max_advil_daily_label": "Advil — Max Daily",
   "max_advil_daily_sub": "Every 6–8 h · max 4 doses/day",
-
   "tylenol_generic": "Acetaminophen",
   "tylenol_dose_range": "15 mg/kg",
   "tylenol_dose_suffix": "· q4–6h · max 5×/day",
-
   "advil_generic": "Ibuprofen — <em>≥ 6 months only</em>",
   "advil_dose_range": "10 mg/kg",
   "advil_dose_suffix": "· q6–8h · max 4×/day",
-
   "col_formulation": "Formulation",
   "col_amount": "Give This Amount",
   "col_how_often": "How Often",
   "col_who_for": "Who It's For",
-
   "freq_tylenol": "Every 4–6 hours",
   "freq_advil": "Every 6–8 hours",
   "max_doses_tylenol": "Max 5 doses/day",
   "max_doses_advil": "Max 4 doses/day",
   "enter_weight": "Enter weight",
-
+  "use_liquid_tag": "Use liquid for accurate dosing",
   "advil_warning_title": "Ibuprofen (Advil / Motrin) is NOT safe for infants under 6 months of age",
   "advil_warning_body_html": "Ibuprofen should <strong>not</strong> be given to any child younger than 6 months old. For fever management in infants under 6 months, <strong>Acetaminophen (Tylenol) is the only recommended over-the-counter option</strong> — and only with physician guidance for newborns under 3 months of age.<br><br><strong>Important:</strong> If your infant under 6 months has a fever ≥ 38.0°C (rectal), <strong>contact your doctor or go to the emergency department promptly.</strong> Fever in young infants can indicate serious infection and requires immediate medical evaluation.",
-
   "schedule_header": "Example Dosing Schedule — Starting at 8:00 AM",
   "sched_tab_staggered": "Staggered (Recommended)",
   "sched_tab_tylenol": "Tylenol Only",
   "sched_tab_alternating": "Full Alternating",
-
   "sched_staggered_title": "Staggered Tylenol + Advil — 3 hours apart",
   "sched_staggered_desc": "Give Tylenol first, then Advil 3 hours later, and continue alternating. This provides more continuous fever control than either drug alone. Each drug still respects its own minimum interval: Tylenol every 4 h minimum, Advil every 6 h minimum.",
   "sched_tylenol_title": "Tylenol Only — every 4–6 hours",
   "sched_tylenol_desc": "Use when Advil is unavailable, not tolerated, or your physician recommends Tylenol only. Give every 4 hours as needed (maximum 5 doses in 24 hours).",
   "sched_alternating_title": "Alternating every 4 hours",
   "sched_alternating_desc": "Strictly alternating drugs every 4 hours. Each drug is given every 8 hours (well within its maximum frequency). Keep a written log to avoid accidentally doubling a dose.",
-
   "safety_tylenol_heading": "Acetaminophen — Key Points",
   "safety_tylenol_1": "Safe from birth (physician guidance for < 3 months)",
   "safety_tylenol_2": "Every 4–6 hours as needed; max 5 doses/24 h",
   "safety_tylenol_3_html": "Do <strong>not</strong> exceed 75 mg/kg/day (max 4,000 mg/day)",
   "safety_tylenol_4": "Avoid with liver (hepatic) problems",
   "safety_tylenol_5": "Check cold/flu combination products for hidden acetaminophen",
-
   "safety_advil_heading": "Ibuprofen — Key Points",
   "safety_advil_1_html": "<strong>Not for infants &lt; 6 months</strong>",
   "safety_advil_2": "Every 6–8 hours as needed; max 4 doses/24 h",
   "safety_advil_3": "Do not exceed 40 mg/kg/day (max 2,400 mg/day)",
   "safety_advil_4": "Give with food or milk to reduce stomach upset",
   "safety_advil_5": "Avoid if dehydrated, or with kidney or bleeding problems",
-
   "footer_html": "<strong>Disclaimer:</strong> This sheet is a clinical reference aid. Doses are based on standard weight-based guidelines (acetaminophen 15 mg/kg/dose; ibuprofen 10 mg/kg/dose). Individual patient factors including age, organ function, concurrent medications, and clinical context must always be considered. Verify with current formulary guidelines (e.g. CPS, SickKids Drug Handbook). This tool does not replace clinical judgment. Formulations listed are representative Canadian market products — always confirm label concentration before dispensing.",
-
   "warn_under5kg": "⚠️ Weight < 5 kg detected — if this child is under 6 months, please toggle the age group above. Ibuprofen is contraindicated under 6 months.",
-
   "lang_selector_label": "Language",
-
   "form_infant_drops": "Infant Drops",
   "form_childrens_liquid": "Children's Liquid",
   "form_chewable_80": "Chewable 80 mg",
@@ -96,7 +81,6 @@
   "form_chewable_100": "Chewable 100 mg",
   "form_tablets_200": "Tablets 200 mg",
   "form_tablets_400": "Tablets 400 mg",
-
   "note_concentrated_drops": "Concentrated drops",
   "note_ages_2_11": "Ages 2–11 y",
   "note_ages_6_11": "Ages 6–11 y",
@@ -107,11 +91,9 @@
   "note_6_23_months": "6–23 months",
   "note_adolescent": "Adolescent/adult",
   "note_adult_rx": "Adult / Rx",
-
   "dose": "Dose:",
   "mg_dash": "— mg",
   "mgday_dash": "— mg/day",
-
   "tl_start_tylenol": "Start — give Tylenol",
   "tl_3h_advil": "3 h later — give Advil",
   "tl_3h_tylenol": "3 h later — give Tylenol (6 h since last Tylenol ✓)",
